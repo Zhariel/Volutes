@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0bfea3d3-14ea-4802-8373-12e21e703724" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="72kgph2v" />
+  </component>
+  <component name="ProjectId" id="24zNcvBaNMiA9KWDabGU9JOIX6m" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Revive\CLionProjects\RenderingEngine\target\sample" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Revive\CLionProjects\RenderingEngine\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="command" value="run --package RenderingEngine --bin RenderingEngine" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0bfea3d3-14ea-4802-8373-12e21e703724" name="Default Changelist" comment="" />
+      <created>1644629537676</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644629537676</updated>
+      <workItem from="1644629539160" duration="700000" />
+      <workItem from="1644693202057" duration="496000" />
+      <workItem from="1644710562610" duration="1940000" />
+      <workItem from="1644772219595" duration="18511000" />
+      <workItem from="1644832928705" duration="514000" />
+      <workItem from="1644834301184" duration="642000" />
+      <workItem from="1644859443524" duration="21870000" />
+      <workItem from="1644915764241" duration="1487000" />
+      <workItem from="1644947066557" duration="5970000" />
+      <workItem from="1645036923466" duration="6177000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="734" y="354" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1644629600818">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="734" y="354" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1644629600818" />
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1644873258889">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1644873258889" />
+    <state x="1060" y="454" key="FileChooserDialogImpl" timestamp="1644772270526">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1060" y="454" key="FileChooserDialogImpl/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1644772270526" />
+    <state width="2517" height="408" key="GridCell.Tab.0.bottom" timestamp="1645050321523">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="408" key="GridCell.Tab.0.bottom/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1645050321523" />
+    <state width="2517" height="408" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1645037082335" />
+    <state width="2517" height="408" key="GridCell.Tab.0.center" timestamp="1645050321523">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="408" key="GridCell.Tab.0.center/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1645050321523" />
+    <state width="2517" height="408" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1645037082335" />
+    <state width="2517" height="408" key="GridCell.Tab.0.left" timestamp="1645050321523">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="408" key="GridCell.Tab.0.left/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1645050321523" />
+    <state width="2517" height="408" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1645037082335" />
+    <state width="2517" height="408" key="GridCell.Tab.0.right" timestamp="1645050321523">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="408" key="GridCell.Tab.0.right/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1645050321523" />
+    <state width="2517" height="408" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1645037082335" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1644873448660">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1644873448660" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1645043715986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1645043715986" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1644865824462">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/-2560.0.2560.1440@0.0.2560.1400" timestamp="1644865824462" />
+  </component>
+</project>

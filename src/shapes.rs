@@ -1,28 +1,18 @@
 use crate::settings::{Settings};
 use std::collections::HashMap;
 
-pub struct Vertex {
+pub struct Vec3D {
     pub x: f32,
     pub y: f32,
     pub z: f32,
 }
 
 pub struct Triangle {
-    pub a: Vertex,
-    pub b: Vertex,
-    pub c: Vertex,
+    pub a: Vec3D,
+    pub b: Vec3D,
+    pub c: Vec3D,
 }
 
-pub struct Face {
-    pub t1: Triangle,
-    pub t2: Triangle,
-}
-
-pub struct Cube {
-    pub front: Face,
-    pub right: Face,
-    pub back: Face,
-    pub left: Face,
-    pub bottom: Face,
-    pub top: Face,
+pub struct Mesh {
+    pub triangles: Vec<Triangle>
 }

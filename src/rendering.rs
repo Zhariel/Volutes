@@ -37,18 +37,6 @@ impl Ray for AnyRay {
     }
 }
 
-pub struct RayBuilder{}
-impl RayBuilder{
-    pub fn make_ray(&self, s: String) -> AnyRay{
-        match s.as_str() {
-            "casting" => AnyRay::Casting(Casting),
-            "marching" => AnyRay::Marching(Marching),
-            "tracing" => AnyRay::Tracing(Tracing),
-            _ => AnyRay::Casting(Casting),
-        }
-    }
-}
-
 pub struct Renderer{
     pub fov: usize,
     pub ray: AnyRay,
@@ -62,6 +50,15 @@ impl Renderer {
     pub fn from_json() -> Renderer {
         let settings: Settings = Settings::load();
 
-        Renderer {fov: settings.fov, ray: RayBuilder{}.make_ray(settings.rendering)}
+        Renderer {fov: settings.fov, ray: Renderer::make_ray(settings.rendering)}
+    }
+
+    pub fn make_ray(s: String) -> AnyRay{
+        match s.as_str() {
+            "casting" => AnyRay::Casting(Casting),
+            "marching" => AnyRay::Marching(Marching),
+            "tracing" => AnyRay::Tracing(Tracing),
+            _ => AnyRay::Casting(Casting),
+        }
     }
 }

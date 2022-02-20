@@ -47,7 +47,7 @@ impl Renderer {
         self.ray.execute();
     }
 
-    pub fn from_json() -> Renderer {
+    pub fn new() -> Renderer {
         let settings: Settings = Settings::load();
 
         Renderer {fov: settings.fov, ray: Renderer::make_ray(settings.rendering)}

@@ -1,3 +1,4 @@
+
 pub struct Math{}
 
 impl Math{
@@ -7,7 +8,8 @@ impl Math{
 
     }
 
-    pub fn triangulate(vertices: Vec<f32>, indices: Vec<i32>){
+    // assume it's convex for now
+    pub fn delaunay_triangulation(vertices: Vec<f32>, indices: Vec<i32>){
 
     }
 }

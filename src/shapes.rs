@@ -15,9 +15,7 @@ impl Vec3D{
 }
 
 pub struct Triangle {
-    pub a: Vec3D,
-    pub b: Vec3D,
-    pub c: Vec3D,
+    pub verts: [Vec3D; 3]
 }
 
 pub struct Mesh {

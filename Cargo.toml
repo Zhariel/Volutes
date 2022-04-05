@@ -3,11 +3,13 @@ name = "RenderingEngine"
 version = "0.1.0"
 authors = ["Romain Blazevic"]
 edition = "2018"
+resolver="2"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 serde = {version = "1.0.79", features = ["derive"]}
 ndarray-linalg = "0.14.1"
+ndarray = "0.15.4"
 serde_json = "1.0.79"
-glium="*"
+nannou = "0.18.1"

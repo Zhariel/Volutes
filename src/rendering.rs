@@ -1,64 +1,51 @@
+use nannou::prelude::*;
 use crate::settings::{Settings};
-
-pub trait Ray {
-    fn execute(&self);
-}
-
-pub struct Casting;
-impl Ray for Casting {
-    fn execute(&self) {
-        println!("Casting");
-    }
-}
-
-pub struct Marching;
-impl Ray for Marching {
-    fn execute(&self) {println!("Marching");}
-}
-
-pub struct Tracing;
-impl Ray for Tracing {
-    fn execute(&self) {println!("Tracing");}
-}
-
-pub enum AnyRay {
-    Casting(Casting),
-    Marching(Marching),
-    Tracing(Tracing),
-}
-
-impl Ray for AnyRay {
-    fn execute(&self) {
-        match self {
-            Self::Casting(casting) => casting.execute(),
-            Self::Marching(marching) => marching.execute(),
-            Self::Tracing(tracing) => tracing.execute(),
-        }
-    }
-}
+use crate::shapes::{Vec3D, Triangle, Mesh};
 
 pub struct Renderer{
-    pub fov: usize,
-    pub ray: AnyRay,
+    pub rays: Rays,
+    pub settings: Settings,
 }
 
 impl Renderer {
-    pub fn render(&self) {
-        self.ray.execute();
-    }
 
     pub fn new() -> Renderer {
-        let settings: Settings = Settings::load();
-
-        Renderer {fov: settings.fov, ray: Renderer::make_ray(settings.rendering)}
+        Renderer {
+            rays: Rays,
+            settings: Settings::load(),
+        }
     }
 
-    pub fn make_ray(s: String) -> AnyRay{
-        match s.as_str() {
-            "casting" => AnyRay::Casting(Casting),
-            "marching" => AnyRay::Marching(Marching),
-            "tracing" => AnyRay::Tracing(Tracing),
-            _ => AnyRay::Casting(Casting),
+    pub fn render(&self, draw: &Draw, mesh: &Mesh){
+        match self.settings.rendering.as_str() {
+            "casting" => self.rays.casting(draw, mesh),
+            "marching" => self.rays.marching(draw, mesh),
+            "tracing" => self.rays.tracing(draw, mesh),
+            "vertices" => self.rays.vertices(draw, mesh, self.settings.vertex_size),
+            _ => self.rays.casting(draw, mesh),
         }
     }
 }
+
+pub struct Rays;
+impl Rays{
+
+    fn casting(&self, draw: &Draw, mesh: &Mesh) {
+        println!("Casting");
+    }
+
+    fn marching(&self, draw: &Draw, mesh: &Mesh) {println!("Marching");}
+
+    fn tracing(&self, draw: &Draw, mesh: &Mesh) {println!("tracing");}
+
+    fn vertices(&self, draw: &Draw, mesh: &Mesh, size: f32) {
+
+        draw.rect()
+            .color(BLACK)
+            .w(size)
+            .h(size)
+            .x_y(1.0, 1.0);
+    }
+}
+
+

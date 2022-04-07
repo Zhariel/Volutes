@@ -2,6 +2,7 @@ use nannou::prelude::*;
 use std::iter::zip;
 use nannou::image::RgbImage;
 use crate::obj::ObjParser;
+use crate::rendering::Renderer;
 
 pub struct RenderWindow{
     pub name: String,
@@ -25,7 +26,9 @@ impl RenderWindow{
     }
 
     pub fn run(&self){
+
         struct Model {
+            renderer: Renderer,
             window: WindowId,
         }
 
@@ -40,12 +43,12 @@ impl RenderWindow{
                 .build()
                 .unwrap();
 
-            let parser = ObjParser{filename: "res\\cube.obj".to_string()};
-            let mesh = parser.extract_obj();
-
             // let vs_desc = wgpu::include_wgsl!("shaders\\vs.wgsl");
             // let vs_mod = device.create_shader_module(&vs_desc);
-            Model {window}
+            Model {
+                renderer: Renderer::new(),
+                window
+            }
         }
 
         fn event(app: &App, _model: &mut Model, event: WindowEvent) {
@@ -55,11 +58,18 @@ impl RenderWindow{
         fn view(app: &App, _model: &Model, frame: Frame) {
             // let win = app.window_rect();
 
+            let parser = ObjParser{filename: "res\\cube.obj".to_string()};
+            let mesh = parser.extract_obj();
+
             let draw = app.draw();
-            draw.background().color(BLUE);
+            draw.background().color(WHITE);
+
+
+            _model.renderer.render(&draw, &mesh);
             
 
             draw.to_frame(app, &frame).unwrap();
+
 
             // let tris = zip((1..win.w() as usize), (1..win.h() as usize))
             //     .for_each(|i| {

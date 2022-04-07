@@ -6,7 +6,10 @@ use std::io::Read;
 #[derive(Serialize, Deserialize)]
 pub struct Settings {
     pub rendering: String,
+    pub width: usize,
+    pub height: usize,
     pub fov: usize,
+    pub vertex_size: f32,
 }
 
 impl Settings {

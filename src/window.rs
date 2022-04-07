@@ -34,9 +34,10 @@ impl RenderWindow{
 
         fn model(app: &App) -> Model {
 
+            let renderer = Renderer::new();
             let window = app
                 .new_window()
-                .size(1000, 1000)
+                .size(renderer.settings.window_size, renderer.settings.window_size)
                 .title("Waves")
                 .key_pressed(key_pressed)
                 .view(view)
@@ -46,7 +47,7 @@ impl RenderWindow{
             // let vs_desc = wgpu::include_wgsl!("shaders\\vs.wgsl");
             // let vs_mod = device.create_shader_module(&vs_desc);
             Model {
-                renderer: Renderer::new(),
+                renderer,
                 window
             }
         }

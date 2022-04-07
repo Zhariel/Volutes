@@ -15,14 +15,7 @@ mod rendering;
 
 
 fn main() {
-
-
-    // let parser = ObjParser{filename: "res\\cube.obj".to_string()};
-    //
-    // let b = parser.extract_obj();
-
     let window = RenderWindow::new();
 
     window.run();
-
 }

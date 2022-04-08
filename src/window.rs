@@ -1,8 +1,9 @@
+use crate::shapes::{Mesh, ProjectedMesh};
+use crate::rendering::Renderer;
+use crate::obj::ObjParser;
+
 use nannou::prelude::*;
 use std::iter::zip;
-use nannou::image::RgbImage;
-use crate::obj::ObjParser;
-use crate::rendering::Renderer;
 
 pub struct RenderWindow{
     pub name: String,
@@ -30,11 +31,18 @@ impl RenderWindow{
         struct Model {
             renderer: Renderer,
             window: WindowId,
+            mesh: Mesh,
+            projectedmesh: ProjectedMesh,
+
         }
 
         fn model(app: &App) -> Model {
 
             let renderer = Renderer::new();
+            let parser = ObjParser{filename: "res\\cube.obj".to_string()};
+            let mesh = parser.extract_obj();
+            let projectedmesh = ProjectedMesh::new(&mesh);
+
             let window = app
                 .new_window()
                 .size(renderer.settings.window_size, renderer.settings.window_size)
@@ -48,7 +56,9 @@ impl RenderWindow{
             // let vs_mod = device.create_shader_module(&vs_desc);
             Model {
                 renderer,
-                window
+                window,
+                mesh,
+                projectedmesh,
             }
         }
 
@@ -58,9 +68,6 @@ impl RenderWindow{
 
         fn view(app: &App, _model: &Model, frame: Frame) {
             // let win = app.window_rect();
-
-            let parser = ObjParser{filename: "res\\cube.obj".to_string()};
-            let mesh = parser.extract_obj();
 
             let draw = app.draw();
             draw.background().color(WHITE);

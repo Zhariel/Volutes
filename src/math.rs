@@ -1,11 +1,7 @@
-use crate::shapes::Vec3D;
-use ndarray::arr2;
+use crate::shapes::{Vec2D, Vec3D};
+use ndarray::{arr1, arr2, Array1};
 
-pub struct Math{}
+pub fn project(vec3: &Vec3D, fov: usize) -> Vec2D {
 
-impl Math{
-
-    pub fn project(){
-
-    }
+    Vec2D{x: 1.0, y: 1.0}
 }

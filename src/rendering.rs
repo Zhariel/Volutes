@@ -1,6 +1,7 @@
 use nannou::prelude::*;
 use crate::settings::{Settings};
 use crate::shapes::{Vec3D, Triangle, Mesh};
+use crate::math::project;
 
 pub struct Renderer{
     pub rays: Rays,

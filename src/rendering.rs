@@ -1,7 +1,7 @@
 use nannou::prelude::*;
 use crate::settings::{Settings};
-use crate::shapes::{Vec3D, Triangle, Mesh};
-use crate::math::project;
+use crate::shapes::{Triangle, Mesh};
+// use crate::math::project;
 
 pub struct Renderer{
     pub rays: Rays,
@@ -45,7 +45,7 @@ impl Rays{
             .color(BLACK)
             .w(size)
             .h(size)
-            .x_y(1.0, 1.0);
+            .x_y(0.0, 0.0);
     }
 }
 

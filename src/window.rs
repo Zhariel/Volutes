@@ -1,4 +1,5 @@
-use crate::shapes::{Mesh, ProjectedMesh};
+use crate::shapes::{Mesh};
+use crate::math::Projector;
 use crate::rendering::Renderer;
 use crate::obj::ObjParser;
 
@@ -7,10 +8,10 @@ use std::iter::zip;
 
 pub struct RenderWindow{
     pub name: String,
-    pub red: f32,
-    pub green: f32,
-    pub blue: f32,
-    pub alpha: f32,
+    pub red: f64,
+    pub green: f64,
+    pub blue: f64,
+    pub alpha: f64,
 }
 
 
@@ -32,7 +33,7 @@ impl RenderWindow{
             renderer: Renderer,
             window: WindowId,
             mesh: Mesh,
-            projectedmesh: ProjectedMesh,
+            projector: Projector,
 
         }
 
@@ -41,7 +42,7 @@ impl RenderWindow{
             let renderer = Renderer::new();
             let parser = ObjParser{filename: "res\\cube.obj".to_string()};
             let mesh = parser.extract_obj();
-            let projectedmesh = ProjectedMesh::new(&mesh);
+            let projector = Projector::new(0.0, 0.0, 0.0, 0.0, 0.0);
 
             let window = app
                 .new_window()
@@ -58,7 +59,7 @@ impl RenderWindow{
                 renderer,
                 window,
                 mesh,
-                projectedmesh,
+                projector,
             }
         }
 
@@ -73,16 +74,10 @@ impl RenderWindow{
             draw.background().color(WHITE);
 
 
-            _model.renderer.render(&draw, &mesh);
+            _model.renderer.render(&draw, &_model.mesh);
             
 
             draw.to_frame(app, &frame).unwrap();
-
-
-            // let tris = zip((1..win.w() as usize), (1..win.h() as usize))
-            //     .for_each(|i| {
-            //         print!("{} {}\n", i.0, i.1)
-            //     });
 
         }
 

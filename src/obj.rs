@@ -1,7 +1,8 @@
 use std::fs::File;
-use crate::shapes::{Vec3D, Triangle, Mesh};
+use crate::shapes::{Triangle, Mesh};
 use std::io::{Lines, BufReader, BufRead};
 use std::str::SplitWhitespace;
+use nalgebra::{Vector3};
 
 pub struct ObjParser {
     pub filename: String
@@ -24,8 +25,8 @@ impl ObjParser {
 
             match line.next() {
                 Some("v") => {
-                    let vec: Vec<f32> = line.map(|x| x.parse().unwrap()).collect();
-                    mesh.vertices.push(Vec3D::from_vec(vec));
+                    let vec: Vec<f64> = line.map(|x| x.parse().unwrap()).collect();
+                    mesh.vertices.push(Vector3::new(vec[0], vec[1], vec[2]));
                 },
                 Some("f") => {
                     let indices: Vec<usize> = line.map(|x| x.split('/').next().unwrap().parse().unwrap()).collect();

@@ -6,19 +6,19 @@ use std::io::Read;
 #[derive(Serialize, Deserialize)]
 pub struct Settings {
     pub rendering: String,
-    pub fov: usize,
+    pub fov: f32,
     pub window_size: u32,
     pub vertex_size: f32,
 }
 
 impl Settings {
-    pub fn store(&self){
+    pub fn store(&self) {
         let filename = "settings.json";
         let serialized = serde_json::to_string(self).unwrap();
         fs::write(filename, serialized).expect("Unable to write settings.");
     }
 
-    pub fn load() -> Settings{
+    pub fn load() -> Settings {
         let filename = "settings.json";
 
         let mut data = String::new();

@@ -1,16 +1,16 @@
 use crate::settings::{Settings};
 use crate::math::Projector;
-use nalgebra::{Vector2, Vector3, Vector4};
+use vek::{Vec3, Vec4};
 
 pub struct Triangle {
-    pub a: Vector3<f64>,
-    pub b: Vector3<f64>,
-    pub c: Vector3<f64>,
+    pub a: Vec3<f64>,
+    pub b: Vec3<f64>,
+    pub c: Vec3<f64>,
 }
 
 
 pub struct Mesh {
-    pub vertices: Vec<Vector3<f64>>,
+    pub vertices: Vec<Vec3<f64>>,
     pub triangles: Vec<Triangle>,
 }
 
@@ -26,7 +26,7 @@ impl Mesh {
             let vertices = self.vertices
                 .clone()
                 .into_iter()
-                .map(|v| Vector4::new(v.x, v.y, v.z, 1.0) * proj.projection_matrix)
+                .map(|v| proj.project(v))
                 .collect();
         Mesh {
             vertices,

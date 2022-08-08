@@ -1,7 +1,6 @@
 use nannou::prelude::*;
 use crate::settings::{Settings};
 use crate::shapes::{Triangle, Mesh};
-// use crate::math::project;
 
 pub struct Renderer{
     pub rays: Rays,

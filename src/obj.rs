@@ -4,42 +4,35 @@ use std::io::{Lines, BufReader, BufRead};
 use std::str::SplitWhitespace;
 use vek::Vec3;
 
-pub struct ObjParser {
-    pub filename: String
-}
+pub fn extract_obj(filename: String) -> Mesh {
+    let file = File::open(filename).unwrap();
+    let reader = BufReader::new(file);
 
-impl ObjParser {
+    let mut vert_indices: Vec<Vec<i32>> = Vec::new();
+    let mut mesh: Mesh = Mesh::new();
 
-    pub fn extract_obj(&self) -> Mesh{
-        let file = File::open(&self.filename).unwrap();
-        let reader = BufReader::new(file);
+    let mut unwrapped_line;
 
-        let mut vert_indices : Vec<Vec<i32>> = Vec::new();
-        let mut mesh: Mesh = Mesh::new();
+    for (index, line) in reader.lines().enumerate() {
+        unwrapped_line = line.unwrap();
+        let mut line = unwrapped_line.split_whitespace();
 
-        let mut unwrapped_line;
-
-        for (index, line) in reader.lines().enumerate(){
-            unwrapped_line = line.unwrap();
-            let mut line = unwrapped_line.split_whitespace();
-
-            match line.next() {
-                Some("v") => {
-                    let vec: Vec<f64> = line.map(|x| x.parse().unwrap()).collect();
-                    mesh.vertices.push(Vec3::new(vec[0], vec[1], vec[2]));
-                },
-                Some("f") => {
-                    let indices: Vec<usize> = line.map(|x| x.split('/').next().unwrap().parse().unwrap()).collect();
-                    mesh.triangles.push(Triangle{
-                        a: mesh.vertices[indices[0]-1],
-                        b: mesh.vertices[indices[1]-1],
-                        c: mesh.vertices[indices[2]-1],
-                    });
-                },
-                _ => {}
+        match line.next() {
+            Some("v") => {
+                let vec: Vec<f64> = line.map(|x| x.parse().unwrap()).collect();
+                mesh.vertices.push(Vec3::new(vec[0], vec[1], vec[2]));
             }
+            Some("f") => {
+                let indices: Vec<usize> = line.map(|x| x.split('/').next().unwrap().parse().unwrap()).collect();
+                mesh.triangles.push(Triangle {
+                    a: mesh.vertices[indices[0] - 1],
+                    b: mesh.vertices[indices[1] - 1],
+                    c: mesh.vertices[indices[2] - 1],
+                });
+            }
+            _ => {}
         }
-
-        mesh
     }
+
+    mesh
 }

@@ -1,4 +1,5 @@
-use crate::window::RenderWindow;
+use crate::window::{model};
+use nannou::prelude::*;
 
 mod obj;
 mod window;
@@ -6,11 +7,10 @@ mod math;
 mod shapes;
 mod settings;
 mod rendering;
-mod camera;
-
+mod scene;
 
 fn main() {
-    let window = RenderWindow::new();
 
-    window.run();
+    nannou::app(model).run();
 }
+

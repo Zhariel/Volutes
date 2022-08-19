@@ -1,39 +1,32 @@
-use vek::{Mat4, Vec4};
-use std::ops::Mul;
+use vek::{Vec2, Vec3};
+use crate::settings::Settings;
 
-pub struct Projector {
-    pub a: f64,
-    pub f: f64,
-    pub q: f64,
-    pub projection_matrix: Mat4<f64>,
+// pub fn project3d(a: Vec3<f64>, c: Vec3<f64>, t: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
+//     let f = 50.0;
+//
+//     let x_p = (a.x - c.x) * (f/a.z) + c.x;
+//     let y_p = (a.y - c.y) * (f/a.z) + c.y;
+//
+//     Vec2{x: x_p, y: y_p}
+// }
+
+pub fn project3d(a: Vec3<f64>, c: Vec3<f64>, t: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
+    
 }
 
-impl Projector {
-    pub fn new(w: f64, h: f64, zf: f64, zn: f64, fov: f64) -> Projector {
-        let a = w/h;
-        let f = 1.0 / (fov/2.0).tan();
-        let q = zf/(zf-zn);
-
-        Projector {
-            a,
-            f,
-            q,
-            projection_matrix: Mat4::new(
-                    a*f, 0.0, 0.0, 0.0,
-                    0.0, f, 0.0, 0.0,
-                    0.0, 0.0, q, 1.0,
-                    0.0, 0.0, zn*q, 0.0
-            )
-        }
-    }
-
-    pub fn project(self, vec: Vec4<f64>) -> Vec4<f64> {
-
-        Vec4::new(
-            vec.x * self.projection_matrix[(0, 0)],
-            vec.y * self.projection_matrix[(1, 1)],
-            vec.z * self.projection_matrix[(2, 2)] - self.projection_matrix[(2, 3)],
-            self.projection_matrix[(3, 2)],
-        )
-    }
-}
+// pub fn project3d(a: Vec3<f64>, c: Vec3<f64>, t: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
+//     let x = a.x - c.x;
+//     let y = a.y - c.y;
+//     let z = a.z - c.z;
+//
+//     let d = Vec3::new(
+//         t.y.cos() * (t.z.sin() * y + t.z.cos() * x) - t.y.sin() * z,
+//         t.x.sin() * (t.y.cos() * z + t.y.sin() * (t.z.sin() * y + t.z.cos() * x)) + t.x.cos() * (t.z.cos() * y - t.z.sin() * x),
+//         t.x.cos() * (t.y.cos() * z + t.y.sin() * (t.z.sin() * y + t.z.cos() * x)) - t.x.sin() * (t.z.cos() * y - t.z.sin() * x),
+//     );
+//     println!("d : {:?}", d);
+//     Vec2 {
+//         x: (e.z / d.z) * d.x + e.x,
+//         y: (e.z / d.z) * d.y + e.y,
+//     }
+// }

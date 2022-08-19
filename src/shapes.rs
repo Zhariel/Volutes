@@ -1,6 +1,7 @@
 use crate::settings::{Settings};
-use crate::math::Projector;
-use vek::{Vec3, Vec4};
+use crate::scene::{Camera, Plane};
+use crate::math::project3d;
+use vek::{Vec3, Vec2};
 
 pub struct Triangle {
     pub a: Vec3<f64>,
@@ -8,9 +9,9 @@ pub struct Triangle {
     pub c: Vec3<f64>,
 }
 
-
 pub struct Mesh {
     pub vertices: Vec<Vec3<f64>>,
+    pub projected_vertices: Vec<Vec2<f64>>,
     pub triangles: Vec<Triangle>,
 }
 
@@ -18,19 +19,16 @@ impl Mesh {
     pub fn new() -> Mesh {
         Mesh {
             vertices: vec![],
+            projected_vertices: vec![],
             triangles: vec![],
         }
     }
 
-    pub fn project(self, proj: &Projector) -> Mesh {
-            let vertices = self.vertices
-                .clone()
-                .into_iter()
-                .map(|v| proj.project(v))
-                .collect();
-        Mesh {
-            vertices,
-            triangles: vec![],
-        }
+    pub fn project(&mut self, cam: &Camera, plane: &Plane) {
+        self.projected_vertices = self.vertices
+            .clone()
+            .into_iter()
+            .map(|v| project3d(v, cam.pos, cam.angles, plane.pos))
+            .collect();
     }
 }

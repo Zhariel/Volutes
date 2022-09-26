@@ -9,6 +9,7 @@ pub struct Settings {
     pub fov: f32,
     pub window_size: u32,
     pub vertex_size: f32,
+    pub rotation_angle: f64,
 }
 
 impl Settings {

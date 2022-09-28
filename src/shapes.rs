@@ -1,6 +1,6 @@
 use crate::settings::{Settings};
 use crate::scene::{Camera};
-use crate::math::{project3d, rotate};
+use crate::math::{project_perspective, rotate};
 use vek::{Vec3, Vec2, Mat3};
 use std::ops::Mul;
 
@@ -30,7 +30,7 @@ impl Mesh {
         self.projected_vertices = self.vertices
             .clone()
             .into_iter()
-            .map(|v| project3d(v, cam.pos, cam.angles, cam.lens))
+            .map(|v| project_perspective(v, cam.pos, cam.angles, cam.lens))
             .collect();
     }
 

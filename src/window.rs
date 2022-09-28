@@ -17,8 +17,8 @@ pub struct Model {
 
 pub fn model(app: &App) -> Model {
     let renderer = Renderer::new();
-    let mesh = extract_obj("res/cone.obj".to_string());
-    let camera = Camera::new(0.1, 0.1, 0.1, 90.0, 0.0, 0.0, 5.0);
+    let mesh = extract_obj("res/cube.obj".to_string());
+    let camera = Camera::new(0.0, 0.0, 0.0, 0.0, 90.0, 0.0, 10.0);
 
     println!("mesh : {:?}", mesh.vertices);
     let window = app
@@ -32,7 +32,7 @@ pub fn model(app: &App) -> Model {
 
     // let vs_desc = wgpu::include_wgsl!("shaders\\vs.wgsl");
     // let vs_mod = device.create_shader_module(&vs_desc);
-    let mut model = Model { renderer, window, camera, mesh, c_speed: 0.1 };
+    let mut model = Model { renderer, window, camera, mesh, c_speed: 1.0 };
 
     model.mesh.project(&model.camera);
     println!("{:?}", model.mesh.projected_vertices);
@@ -61,10 +61,10 @@ fn key_pressed(app: &App, _model: &mut Model, _key: Key) {
         S => { _model.camera.pos.y -= _model.c_speed }
         D => { _model.camera.pos.x += _model.c_speed }
         Q => { _model.camera.pos.x -= _model.c_speed }
-        Up => { _model.camera.pivot("y", _model.c_speed) }
-        Down => { _model.camera.pivot("y", -_model.c_speed) }
-        Right => { _model.camera.pivot("x", _model.c_speed) }
-        Left => { _model.camera.pivot("x", -_model.c_speed) }
+        Up => { _model.camera.pivot("x", _model.c_speed) }
+        Down => { _model.camera.pivot("x", -_model.c_speed) }
+        Right => { _model.camera.pivot("y", _model.c_speed) }
+        Left => { _model.camera.pivot("y", -_model.c_speed) }
         _ => {}
     }
 

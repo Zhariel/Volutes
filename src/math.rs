@@ -1,4 +1,5 @@
 use vek::{Vec2, Vec3, Vec4, Mat3};
+use nannou::math::ConvertAngle;
 use crate::settings::Settings;
 use std::collections::HashMap;
 use std::ops::Mul;
@@ -8,7 +9,7 @@ pub fn rotate(v: &Vec3<f64>, axis: &str, th: f64) -> Vec3<f64> {
         "x" => rotate_x(v, th),
         "y" => rotate_y(v, th),
         "z" => rotate_z(v, th),
-        _ => Vec3 { x: 0.0, y: 0.0, z: 0.0 }
+        _ => panic!("Rotation along a non-existing axis.")
     }
 }
 
@@ -36,32 +37,24 @@ fn rotate_z(v: &Vec3<f64>, th: f64) -> Vec3<f64> {
     ).mul(*v)
 }
 
-pub fn project3d(a: Vec3<f64>, c: Vec3<f64>, c_th: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
-    Vec2 { x: 0.0, y: 0.0 }
+pub fn project_point(c: Vec3<f64>, th: Vec3<f64>, r: f64) -> Vec3<f64> {
+    // x′=rcosθcosα
+    // y′=rsinθ
+    // z′=rcosθsinα
+    Vec3 {
+        x: c.x + r * th.x.deg_to_rad().cos() * th.y.deg_to_rad().cos(),
+        y: c.y + r * th.x.deg_to_rad().sin(),
+        z: c.z + r * th.x.deg_to_rad().cos() * th.y.deg_to_rad().sin(),
+    }
 }
-// pub fn project3d(a: Vec3<f64>, c: Vec3<f64>, t: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
-//
-//
-//     Vec2{x: 0, y: 0}
-// }
 
-// pub fn project3d(a: Vec3<f64>, c: Vec3<f64>, t: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
-//
-// }
+pub fn project_perspective(a: Vec3<f64>, c: Vec3<f64>, c_th: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
+    let d: Vec3<f64> = rotate_z(&rotate_y(&rotate_x(&(a - c), c_th.x), c_th.y), c_th.z);
+    // let d = a - c;
 
-// pub fn project3d(a: Vec3<f64>, c: Vec3<f64>, t: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
-//     let x = a.x - c.x;
-//     let y = a.y - c.y;
-//     let z = a.z - c.z;
-//
-//     let d = Vec3::new(
-//         t.y.cos() * (t.z.sin() * y + t.z.cos() * x) - t.y.sin() * z,
-//         t.x.sin() * (t.y.cos() * z + t.y.sin() * (t.z.sin() * y + t.z.cos() * x)) + t.x.cos() * (t.z.cos() * y - t.z.sin() * x),
-//         t.x.cos() * (t.y.cos() * z + t.y.sin() * (t.z.sin() * y + t.z.cos() * x)) - t.x.sin() * (t.z.cos() * y - t.z.sin() * x),
-//     );
-//     println!("d : {:?}", d);
-//     Vec2 {
-//         x: (e.z / d.z) * d.x + e.x,
-//         y: (e.z / d.z) * d.y + e.y,
-//     }
-// }
+    Vec2 {
+        x: (e.z / d.z) * d.x + e.x,
+        y: (e.z / d.z) * d.y + e.y,
+    }
+}
+

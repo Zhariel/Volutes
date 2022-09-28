@@ -3,7 +3,7 @@ use vek::{Vec3, Vec4, Mat4};
 use nannou::prelude::*;
 use std::ops::Mul;
 use crate::obj::extract_obj;
-use nannou::math::ConvertAngle;
+use crate::math::project_point;
 
 mod obj;
 mod window;
@@ -14,16 +14,11 @@ mod rendering;
 mod scene;
 
 fn main() {
-    // let r = 2.0;
-    // let c = Vec3 { x: 0.0, y: 1.0, z: 0.0 };
-    // let th = Vec3 { x: 90.0, y: 30.0, z: 0.0 };
-    // // let g = Vec3 {
-    // //     x: c.x + r * th.y.deg_to_rad().cos() * th.x.deg_to_rad().cos(),
-    // //     y: c.y + r * th.x.deg_to_rad().sin(),
-    // //     z: c.z + r * th.y.deg_to_rad().sin() * th.x.deg_to_rad().cos()
-    // // };
+    // let r = 2.83;
+    // let c = Vec3 { x: 0.0, y: 0.0, z: 0.0 };
+    // let th = Vec3 { x: 0.0, y: 90.0, z: 0.0 };
+    // let g = project_point(c, th, r);
     // print!("{}", g);
-
 
     // use std::time::{Duration, Instant};
     // let start = Instant::now();
@@ -84,6 +79,6 @@ fn main() {
     // print!("{}", ii);
 
 
-    // nannou::app(model).run();
+    nannou::app(model).run();
 }
 

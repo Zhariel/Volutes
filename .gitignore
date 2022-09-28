@@ -122,3 +122,4 @@ Cargo.lock
 *.pdb
 
 renderingg.rs
+.fake

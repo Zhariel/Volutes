@@ -3,5 +3,5 @@
   "window_size": 500,
   "fov": 90,
   "vertex_size": 2.0,
-  "rotation_angle": 90.0
+  "rotation_incr": 90.0
 }

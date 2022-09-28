@@ -18,9 +18,11 @@ pub struct Model {
 pub fn model(app: &App) -> Model {
     let renderer = Renderer::new();
     let mesh = extract_obj("res/cube.obj".to_string());
-    let camera = Camera::new(0.0, 0.0, 0.0, 0.0, 90.0, 0.0, 10.0);
+    let camera = Camera::new(0.0, 0.0, 0.0, 0.0, 90.0, 0.0, renderer.settings.f_length);
+    // mesh.triangles.iter().for_each(|i| println!("{} {} {}, ", i.a, i.b, i.c));
 
     println!("mesh : {:?}", mesh.vertices);
+    mesh.triangles.iter().for_each(|i| print!(" ⟁ {}", i));
     let window = app
         .new_window()
         .size(renderer.settings.window_size, renderer.settings.window_size)
@@ -35,7 +37,7 @@ pub fn model(app: &App) -> Model {
     let mut model = Model { renderer, window, camera, mesh, c_speed: 1.0 };
 
     model.mesh.project(&model.camera);
-    println!("{:?}", model.mesh.projected_vertices);
+    println!("P_vertices : {:?}", model.mesh.projected_vertices);
 
     model
 }

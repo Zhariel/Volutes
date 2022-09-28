@@ -10,6 +10,7 @@ pub struct Settings {
     pub window_size: u32,
     pub vertex_size: f32,
     pub rotation_incr: f64,
+    pub f_length: f64,
 }
 
 impl Settings {

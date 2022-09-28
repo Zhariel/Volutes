@@ -22,10 +22,11 @@ fn rotate_x(v: &Vec3<f64>, th: f64) -> Vec3<f64> {
 }
 
 fn rotate_y(v: &Vec3<f64>, th: f64) -> Vec3<f64> {
+    let t: f64 = th - 90.0;
     Mat3::new(
-        th.cos(), 0.0, th.sin(),
+        t.cos(), 0.0, t.sin(),
         0.0, 1.0, 0.0,
-        -th.sin(), 0.0, th.cos(),
+        -t.sin(), 0.0, t.cos(),
     ).mul(*v)
 }
 
@@ -49,12 +50,16 @@ pub fn project_point(c: Vec3<f64>, th: Vec3<f64>, r: f64) -> Vec3<f64> {
 }
 
 pub fn project_perspective(a: Vec3<f64>, c: Vec3<f64>, c_th: Vec3<f64>, e: Vec3<f64>) -> Vec2<f64> {
-    let d: Vec3<f64> = rotate_z(&rotate_y(&rotate_x(&(a - c), c_th.x), c_th.y), c_th.z);
-    // let d = a - c;
+    // print!("");
+    let mut d: Vec3<f64> = rotate_z(&rotate_y(&rotate_x(&(a - c), c_th.x), c_th.y), c_th.z);
+    // let mut d = a - c;
+    if d.z == 0.0 {d.z = 1.0}
 
-    Vec2 {
-        x: (e.z / d.z) * d.x + e.x,
-        y: (e.z / d.z) * d.y + e.y,
-    }
+    let vec: Vec2<f64> = Vec2 {
+        x: e.z / d.z * d.x + e.x,
+        y: e.z / d.z * d.y + e.y,
+    };
+    print!("");
+    vec
 }
 

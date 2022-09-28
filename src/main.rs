@@ -14,9 +14,9 @@ mod rendering;
 mod scene;
 
 fn main() {
-    // let r = 2.83;
-    // let c = Vec3 { x: 0.0, y: 0.0, z: 0.0 };
-    // let th = Vec3 { x: 0.0, y: 90.0, z: 0.0 };
+    let r = 2.83;
+    let c = Vec3 { x: 0.0, y: 0.0, z: 0.0 };
+    let th = Vec3 { x: 0.0, y: 90.0, z: 0.0 };
     // let g = project_point(c, th, r);
     // print!("{}", g);
 

@@ -2,12 +2,19 @@ use crate::settings::{Settings};
 use crate::scene::{Camera};
 use crate::math::{project_perspective, rotate};
 use vek::{Vec3, Vec2, Mat3};
-use std::ops::Mul;
+use std::fmt;
+use std::fmt::{Formatter};
 
 pub struct Triangle {
-    pub a: Vec3<f64>,
-    pub b: Vec3<f64>,
-    pub c: Vec3<f64>,
+    pub a: usize,
+    pub b: usize,
+    pub c: usize,
+}
+
+impl fmt::Display for Triangle{
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} {} {},", self.a, self.b, self.c)
+    }
 }
 
 pub struct Mesh {

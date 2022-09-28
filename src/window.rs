@@ -19,7 +19,6 @@ pub fn model(app: &App) -> Model {
     let renderer = Renderer::new();
     let mesh = extract_obj("res/cube.obj".to_string());
     let camera = Camera::new(0.0, 0.0, 0.0, 0.0, 90.0, 0.0, renderer.settings.f_length);
-    // mesh.triangles.iter().for_each(|i| println!("{} {} {}, ", i.a, i.b, i.c));
 
     println!("mesh : {:?}", mesh.vertices);
     mesh.triangles.iter().for_each(|i| print!(" ⟁ {}", i));
